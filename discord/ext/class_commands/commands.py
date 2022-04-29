@@ -166,11 +166,11 @@ class _CommandMeta(type):
 
             annotation = annotations.get(k, 'str')
             autocomplete = False
-            _name = default = _description = choices = MISSING
+            _name = default = description = choices = MISSING
             if isinstance(v, Option):
                 _name = v.name
                 default = v.default
-                _description = v.description
+                description = v.description
                 choices = v.choices
                 autocomplete = v.autocomplete
             elif v is not MISSING:
@@ -179,8 +179,8 @@ class _CommandMeta(type):
             arguments.append(ParameterData(k, default, annotation))
             if _name is not MISSING:
                 renames[k] = _name
-            if _description is not MISSING:
-                descriptions[k] = _description
+            if description is not MISSING:
+                descriptions[k] = description
             if choices is not MISSING:
                 extra_choices[k] = choices
             if autocomplete:
